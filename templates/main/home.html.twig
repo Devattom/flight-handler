@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    {% block menu %}
+        {% include "navbar/navbar.html.twig" %}
+    {% endblock %}  
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-1 my-5 text-center ">Trouver votre vol</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde quidem et ex earum sunt molestias aspernatur minima voluptas, laborum quibusdam quisquam, recusandae porro repellat fuga totam ad temporibus repudiandae delectus voluptatibus! Ratione aspernatur nesciunt harum dicta, quas nemo omnis quaerat iusto obcaecati mollitia similique temporibus, expedita atque magnam veritatis perferendis quis soluta eaque. Quibusdam excepturi sapiente rem ratione recusandae, quaerat ab soluta modi dolorum reiciendis doloremque tempora quasi ea minus commodi doloribus repudiandae eius repellendus fugiat? Beatae ratione qui ea vitae esse perferendis, deleniti nesciunt possimus inventore facilis eum recusandae distinctio vel ducimus libero similique officiis debitis molestias saepe. Voluptatibus praesentium, modi magnam aspernatur ad quia eos quisquam cupiditate deleniti architecto repellat commodi veritatis totam laboriosam aliquid eligendi, dolorum asperiores? Deleniti, inventore. Deleniti obcaecati quia beatae quaerat dolores sequi, libero sint minus ullam ducimus odio deserunt iusto cumque pariatur odit atque impedit. Expedita illum ratione sit et non sequi libero, id adipisci, dolores deleniti autem sed? Placeat ipsum est, minus cupiditate asperiores et, maxime inventore quam itaque quaerat ullam officia. Cum aliquid id, iste iusto ipsam fugiat magnam aliquam. Obcaecati laboriosam adipisci incidunt perferendis praesentium, ea eveniet officia cumque omnis facilis neque tenetur minus, dolorum fuga vitae sint reprehenderit dignissimos.</p>
+
+            
+                    <img src="{{asset('assets/images/avion.png')}}" alt="pictogramme avion" class="rounded mx-auto d-block w-25 mt-5">
+
+                <section class="border-top border-3 border-warning mt-5">
+                    <h2 class="display-3 text-center my-5">Liste des vols</h2>
+                    <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">Numéro de vol</th>
+                                <th scope="col" class="text-center">Ville de départ</th>
+                                <th scope="col" class="text-center">Date de départ</th>
+                                <th scope="col" class="text-center">Heure de départ</th>
+                                <th scope="col" class="text-center">Ville de d'arrivée</th>
+                                <th scope="col" class="text-center">Date d'arrivée</th>
+                                <th scope="col" class="text-center">Heure d'arrivée</th>
+                                <th scope="col" class="text-center">Prix</th>
+                                <th scope="col" class="text-center">Remise</th>
+                                <th scope="col" class="text-center">Sièges disponibles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for flight in flights %}
+                            <tr>
+                                <td class="text-center">{{ flight.flightNb }}</td>
+                                <td class="text-center">{{ flight.departureCity }}</td>
+                                <td class="text-center">{{flight.departureDatetime|date('d-m-Y')}}</td>
+                                <td class="text-center">{{flight.departureDatetime|date('H:i')}}</td>
+                                <td class="text-center">{{ flight.arrivalCity }}</td>
+                                <td class="text-center">{{flight.arrivalDatetime|date('d-m-Y')}}</td>
+                                <td class="text-center">{{flight.arrivalDatetime|date('H:i')}}</td>
+                                <td class="text-center">{{ flight.price }}</td>
+                                <td class="text-center">{{ flight.discount ? '✔️' : '❌' }}</td>
+                                <td class="text-center">{{ flight.availableSeat }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

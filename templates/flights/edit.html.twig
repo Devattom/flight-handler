@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer un vol{% endblock %}
+
+{% block body %}
+    {% block menu %}
+        {% include "navbar/navbar.html.twig" %}
+    {% endblock %}
+        <div class="container">
+            <h1 class="text-center display-1 mb-4">Editer un vol</h1>
+            <h2 class="display-3">Editer vol {{ flight.flightNb }}</h2>
+            {{ include('flights/_form.html.twig', {'button_label': 'Editer'}) }}
+
+            <a href="{{ path('app_flights_index') }}" class="btn btn-lg btn-secondary">Retour à la liste</a>
+        </div>
+{% endblock %}

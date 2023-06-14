@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'enregister{% endblock %}
+
+{% block body %}
+
+<section class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-1 text-center">S'enregister</h1>
+
+            {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Mot de passe :'
+                }) }}
+                {{ form_row(registrationForm.lastname)}}
+                {{ form_row(registrationForm.firstname)}}
+
+                {{ form_row(registrationForm.CGU) }}
+
+                <button type="submit" class="btn btn-large btn-success fs-4 me-3">S'enregister</button>
+                <a href="{{path('app_login')}}" class="btn btn-secondary me-3">Se connecter</a>
+                <a href="{{path('app_main')}}" class="btn btn-warning">Retour à l'accueil</a>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+</section>
+{% endblock %}

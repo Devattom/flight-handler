@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Créer une ville{% endblock %}
+
+{% block body %}
+    {% block menu %}
+        {% include "navbar/navbar.html.twig" %}
+    {% endblock %}
+
+    <div class="container">
+        <h1 class="text-center display-1">Créer une nouvelle ville</h1>
+        
+        {% include "cities/_form.html.twig" %}
+        <a class="btn btn-lg btn-secondary" href="{{ path('app_flights_index') }}">Retour à la liste des vols</a>
+    </div>
+{% endblock %}
